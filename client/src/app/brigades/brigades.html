@@ -1,0 +1,23 @@
+<div class="col-md-2"> </div>
+<div class="col-md-8">
+  <h1 class="header">Панель работы с бригадами</h1>
+  <table class="table table-responsive">
+    <tr><a class="btn btn-toolbar">Создать новую бригаду</a></tr>
+    <tr>
+      <td>Номер бригады</td>
+      <td>Бригадир</td>
+      <td>Действия</td>
+    </tr>
+    <tbody>
+    <tr ng-repeat="brigade in brigades.list_of_brigades">
+      <td>{{brigade.number}}</td>
+      <td>{{brigade.taskmaster}}</td>
+      <td>
+        <a class="btn btn-default"><i class="glyphicon glyphicon-edit"></i> Редактировать</a>
+        <a class="btn btn-default"><i class="glyphicon glyphicon-remove"></i> Удалить</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

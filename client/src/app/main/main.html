@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="col-md-8">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">ЧАО "АртВин"</a>
+          <h4>Страница информации о работах на участке</h4>
+        </div>
+      </div>
+      <div class="col-md-3 ">
+        <p class="navbar-text ">Вы вошли под именем Спорыш Надежда </p>
+      </div>
+      <div class="col-md-1">
+        <button type="button" class="btn btn-default navbar-btn">Выйти</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <p>Выберите участок</p>
+    <label>Участок: </label> <select class="form-control" ng-model="main.area" ng-options="f.name for f in main.areas"><option></option></select>
+    <button type="button" class="btn btn-default" ng-click="main.openBrigade()">Бригада: #{{main.area.brigade}}</button>
+    <p>Выберите вид работы</p>
+    <label>Работа: </label> <select class="form-control" ng-model="main.displayed_work" ng-options="f.name for f in main.work"><option></option></select>
+    <p>Выберите год выполнения</p>
+    <label>Год: </label> <select class="form-control" ng-model="main.dt" ng-options="f for f in main.dates"><option></option></select>
+    <button class="btn btn-large btn-default btn-block" ng-click="main.openWork()">Показать информацию</button>
+      <ya-map ya-zoom="16" ya-center="[33.7179, 44.6878]"ya-after-init="main.afterMapInit($target)">
+        <ya-geo-object ya-source="main.area" ya-options="{draggable: false, fillColor:'0000', strokeColor: '#000000',strokeWidth: 3}"></ya-geo-object>
+      </ya-map>
+    </div>
+  </div>
+</div>
+
+

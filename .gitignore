@@ -1,0 +1,13 @@
+
+.idea/
+/client/bower_components/
+/client/node_modules/
+/client/.tmp/
+/client/dist/
+client/coverage/
+client/.sass-cache/
+client/node_modules/
+
+server/*/.pyc
+server/.pyc
+server/migrations

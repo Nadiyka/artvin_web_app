@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h1 class="modal-title text-center">Прогресс работ</h1>
+</div>
+<div class="modal-body">
+  <h3>
+    Из {{work_display.status.total}} кустов бригадой была выполнена работа {{work_display.work.name}} на  {{work_display.status.done}} кустах.
+    Дата подачи последнего наряда: {{work_display.status.date}}
+  </h3>
+  <progressbar class="progress-striped active" value="work_display.percentage">{{work_display.percentage}}</progressbar>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-block btn-primary" type="button" ng-click="work_display.ok()">OK</button>
+</div>

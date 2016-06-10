@@ -1,0 +1,26 @@
+<div class="col-md-2"> </div>
+<div class="col-md-8">
+<h1 class="header">Панель работы с пользователями</h1>
+  <table class="table table-responsive">
+    <tr><a class="btn btn-toolbar">Создать нового пользователя</a></tr>
+    <tr>
+      <td>Имя пользователя</td>
+      <td>Почта</td>
+      <td>Пароль</td>
+      <td>Тип пользователя</td>
+      <td>Действия</td>
+    </tr>
+      <tbody>
+      <tr ng-repeat="user in users.list_of_users">
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.password}}</td>
+        <td>Является администратором <input type="checkbox" ng-checked="user.type"/></td>
+        <td>
+          <a class="btn btn-default"><i class="glyphicon glyphicon-edit"></i> Редактировать</a>
+          <a class="btn btn-default"><i class="glyphicon glyphicon-remove"></i> Удалить</a>
+        </td>
+      </tr>
+      </tbody>
+  </table>
+</div>

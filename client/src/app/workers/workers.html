@@ -1,0 +1,23 @@
+  <div class="col-md-2"> </div>
+  <div class="col-md-8">
+    <h1 class="header">Панель работы с работниками бригады</h1>
+  <table class="table table-responsive">
+    <tr><a class="btn btn-toolbar">Создать нового работника бригады</a></tr>
+    <tr>
+      <td>Имя</td>
+      <td>Номер бригады</td>
+      <td>Действия</td>
+    </tr>
+    <tbody>
+    <tr ng-repeat="worker in workers.list_of_workers">
+      <td>{{worker.name}}</td>
+      <td>{{worker.brigade_number}}</td>
+      <td>
+        <a class="btn btn-default"><i class="glyphicon glyphicon-edit"></i> Редактировать</a>
+        <a class="btn btn-default"><i class="glyphicon glyphicon-remove"></i> Удалить</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
