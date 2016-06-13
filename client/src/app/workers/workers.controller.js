@@ -6,8 +6,12 @@
     .controller('WorkersController', WorkersController);
 
   /** @ngInject */
-  function WorkersController() {
+  function WorkersController($resource) {
     var vm = this;
+    vm.workers_api = $resource('http://localhost:8000/workers');
+    vm.workers_list = vm.workers_api.query(function(){
+      console.log(vm.workers_list);
+    });
     vm.list_of_workers = [
       {
         name: "Сидоров Вячеслав Анатолиевич",

@@ -6,15 +6,23 @@
     .controller('TaskmasterAddController', TaskmasterAddController);
 
   /** @ngInject */
-  function TaskmasterAddController($modalInstance) {
+  function TaskmasterAddController($modalInstance, taskmaster, $resource) {
     var vm = this;
-    vm.taskmaster = {
-      name: "Николаев Егор Михайлович",
-      email: "petr@mail.ru",
-      password: "password",
-      brigade: 1
-    };
-    vm.ok = function () {
+    vm.add = true;
+    if (taskmaster) {
+      vm.add = false;
+    }
+    vm.taskmaster = taskmaster || {
+        "name": "",
+        "email": "",
+        "password": "",
+        "brigade": 0
+      };
+    vm.ok = function (taskmaster) {
+      var taskmasters_api = $resource('http://localhost:8000/taskmasters/:id/ ',{id:'@id'}, {
+        'update': { method:'PUT' }
+      });
+      taskmasters_api.update({ id: taskmaster.id }, taskmaster);
       $modalInstance.close();
     };
   }

@@ -14,11 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from rest_framework.routers import DefaultRouter
-from artvin.views import TaskmasterViewSet, BrigadeViewSet, WorkerViewSet
+from artvin.views import TaskmasterViewSet, BrigadeViewSet, WorkerViewSet, WorkTypeViewSet, ReportViewSet, AreaViewSet, RowViewSet
 
 router = DefaultRouter()
 router.register(prefix='taskmasters', viewset=TaskmasterViewSet)
 router.register(prefix='brigades', viewset=BrigadeViewSet)
 router.register(prefix='workers', viewset=WorkerViewSet)
+router.register(prefix='worktypes', viewset=WorkTypeViewSet)
+router.register(prefix='reports', viewset=ReportViewSet)
+router.register(prefix='areas', viewset=AreaViewSet)
+router.register(prefix='rows', viewset=RowViewSet)
 
 urlpatterns = router.urls

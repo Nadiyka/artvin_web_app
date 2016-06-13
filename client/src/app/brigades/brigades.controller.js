@@ -6,8 +6,10 @@
     .controller('BrigadesController', BrigadesController);
 
   /** @ngInject */
-  function BrigadesController() {
+  function BrigadesController($resource) {
     var vm = this;
+    vm.brigades_api = $resource('http://localhost:8000/brigades');
+    vm.brigades_list = vm.brigades_api.query();
     vm.list_of_brigades = [
       {
         number: "2",

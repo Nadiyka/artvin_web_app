@@ -1,6 +1,6 @@
 <div class="col-md-2"> </div>
 <div class="col-md-8">
-  <h1 class="header">Панель работы с бригадирами</h1>
+  <h1 class="header">Панель работы с бригадирами </h1>
   <table class="table table-responsive">
     <tr><a class="btn btn-toolbar" ng-click="taskmasters.add()">Создать нового бригадира</a></tr>
     <tr>
@@ -11,13 +11,13 @@
       <td>Действия</td>
     </tr>
     <tbody>
-    <tr ng-repeat="user in taskmasters.list_of_users">
+    <tr ng-repeat="user in taskmasters.taskmasters_list">
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
       <td>{{user.password}}</td>
       <td>{{user.brigade}}</td>
       <td>
-        <a class="btn btn-default" ng-click="taskmasters.add()"><i class="glyphicon glyphicon-edit" ></i> Редактировать</a>
+        <a class="btn btn-default" ng-click="taskmasters.add(user)"><i class="glyphicon glyphicon-edit" ></i> Редактировать</a>
         <a class="btn btn-default" ng-click="taskmasters.delete()"><i class="glyphicon glyphicon-remove" ></i> Удалить</a>
       </td>
     </tr>

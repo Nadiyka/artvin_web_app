@@ -1,20 +1,37 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+import json
 
-
+class Brigade(models.Model):
+    number = models.IntegerField(unique=True)
+    taskmaster_name = models.CharField(max_length=100)
 
 class Taskmaster(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=20)
-
-class Brigade(models.Model):
-    number = models.IntegerField()
-    taskmaster = models.OneToOneField(
-        Taskmaster,
-        primary_key=True,
-    )
+    brigade = models.ForeignKey(Brigade, to_field='number')
 
 class Worker(models.Model):
     name = models.CharField(max_length=100)
-    brigade_number = models.ForeignKey(Brigade)
+    brigade_number = models.ForeignKey(Brigade, to_field='number')
+
+class WorkType(models.Model):
+    name = models.CharField(max_length=30)
+    standart = models.IntegerField()
+
+class Report(models.Model):
+    workType = models.ForeignKey(WorkType)
+    date = models.CharField(max_length=4)
+
+class Area(models.Model):
+    name = models.CharField(max_length=30)
+    coordLat1 = models.CharField(max_length=30)
+    coordLat2 = models.CharField(max_length=30)
+    coordLon1 = models.CharField(max_length=30)
+    coordLon2 = models.CharField(max_length=30)
+    brigade = models.ForeignKey(Brigade, to_field='number')
+
+class Row(models.Model):
+    area = models.ForeignKey(Area)
+    bushes = models.IntegerField()
+    

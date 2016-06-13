@@ -9,11 +9,11 @@
       <td>Действия</td>
     </tr>
     <tbody>
-    <tr ng-repeat="brigade in brigades.list_of_brigades">
+    <tr ng-repeat="brigade in brigades.brigades_list">
       <td>{{brigade.number}}</td>
-      <td>{{brigade.taskmaster}}</td>
+      <td>{{brigade.taskmaster_name}}</td>
       <td>
-        <a class="btn btn-default"><i class="glyphicon glyphicon-edit"></i> Редактировать</a>
+        <a class="btn btn-default"><i class="glyphicon glyphicon-edit" ng-click="brigade.edit(brigade)"></i> Редактировать</a>
         <a class="btn btn-default"><i class="glyphicon glyphicon-remove"></i> Удалить</a>
       </td>
     </tr>
