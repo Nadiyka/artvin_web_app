@@ -23,17 +23,16 @@
           }
         }
       });
-        modalInstance.result.then(function(taskmaster){
-          vm.taskmasters_list.push(taskmaster);
+        modalInstance.result.then(function(){
+          vm.taskmasters_api = $resource('http://localhost:8000/taskmasters');
+          vm.taskmasters_list = vm.taskmasters_api.query();
         });
     };
     vm.delete = function(taskmaster) {
       var taskmasters_api = $resource('http://localhost:8000/taskmasters/:id/ ',{id:'@id'});
       taskmasters_api.remove({ id: taskmaster.id });
-      var i = vm.taskmasters_list.indexOf(taskmaster);
-      if(i != -1) {
-        vm.taskmasters_list.splice(i, 1);
-      }
+      vm.taskmasters_api = $resource('http://localhost:8000/taskmasters');
+      vm.taskmasters_list = vm.taskmasters_api.query();
     };
   }
 

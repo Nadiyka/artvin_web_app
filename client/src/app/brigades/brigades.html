@@ -2,7 +2,7 @@
 <div class="col-md-8">
   <h1 class="header">Панель работы с бригадами</h1>
   <table class="table table-responsive">
-    <tr><a class="btn btn-toolbar" ng-click="brigades.add(brigade)">Создать новую бригаду</a></tr>
+    <tr><a class="btn btn-toolbar" ng-click="brigades.add()">Создать новую бригаду</a></tr>
     <tr>
       <td>Номер бригады</td>
       <td>Бригадир</td>
@@ -13,8 +13,8 @@
       <td>{{brigade.number}}</td>
       <td>{{brigade.taskmaster_name}}</td>
       <td>
-        <a class="btn btn-default"><i class="glyphicon glyphicon-edit" ng-click="brigades.add(brigade)"></i> Редактировать</a>
-        <a class="btn btn-default"><i class="glyphicon glyphicon-remove" ng-click="brigades.delete(brigade)"></i> Удалить</a>
+        <a class="btn btn-default" ng-click="brigades.add(brigade)"><i class="glyphicon glyphicon-edit"></i> Редактировать</a>
+        <a class="btn btn-default"  ng-click="brigades.delete(brigade)"><i class="glyphicon glyphicon-remove"></i> Удалить</a>
       </td>
     </tr>
     </tbody>
