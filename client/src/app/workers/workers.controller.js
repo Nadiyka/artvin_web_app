@@ -6,33 +6,33 @@
     .controller('WorkersController', WorkersController);
 
   /** @ngInject */
-  function WorkersController($resource) {
+  function WorkersController($modal, $resource) {
     var vm = this;
     vm.workers_api = $resource('http://localhost:8000/workers');
-    vm.workers_list = vm.workers_api.query(function(){
-      console.log(vm.workers_list);
-    });
-    vm.list_of_workers = [
-      {
-        name: "Сидоров Вячеслав Анатолиевич",
-        brigade_number: "2"
-      },
-      {
-        name: "Козлов Иван Александрович",
-        brigade_number: "2"
-      },
-      {
-        name: "Коваль Александр Алексеевич",
-        brigade_number: "2"
-      },
-      {
-        brigade_number: "3",
-        name: "Бондарь Ольга Павловна"
-      },
-      {
-        brigade_number: "3",
-        name: "Павлов Андрей Леонидович"
-      }
-    ]
+    vm.workers_list = vm.workers_api.query();
+
+    vm.add = function(worker){
+      var modalInstance = $modal.open({
+        animation: "true",
+        templateUrl: 'app/worker_add/worker_add.html',
+        controller: 'WorkerAddController',
+        controllerAs: 'worker_add',
+        size: "lg",
+        resolve: {
+          worker: function () {
+            return worker;
+          }
+        }
+      });
+      modalInstance.result.then(function(){
+        vm.workers_api = $resource('http://localhost:8000/workers');
+        vm.workers_list = vm.workers_api.query();
+      });
+    };
+    vm.delete = function(worker){
+      var workers_api = $resource('http://localhost:8000/workers/:id/ ',{id:'@id'});
+      workers_api.remove({ id: worker.id });
+      vm.workers_list = workers_api.query();
+    };
   }
 })();

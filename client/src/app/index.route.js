@@ -51,7 +51,13 @@
         templateUrl: 'app/areas/areas.html',
         controller: 'AreasController',
         controllerAs: 'areas',
-        parent: 'admin'
+        parent: 'admin',
+        resolve: {
+          areas: function($resource){
+            var areas_api = $resource('http://localhost:8000/areas');
+            return areas_api.query().$promise;
+          }
+        },
       })
       .state('authorization', {
         url: '/authorization',
