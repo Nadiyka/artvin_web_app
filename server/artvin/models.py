@@ -3,7 +3,7 @@ import json
 
 class Brigade(models.Model):
     number = models.IntegerField(unique=True)
-    taskmaster_name = models.CharField(max_length=100)
+    taskmaster_name = models.CharField(max_length=100, blank=True)
 
 class Taskmaster(models.Model):
     name = models.CharField(max_length=100)

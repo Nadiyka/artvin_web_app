@@ -9,6 +9,7 @@
   function TaskmasterAddController($modalInstance, taskmaster, $resource) {
     var vm = this;
     vm.add = true;
+    var brigades_api = $resource('http://localhost:8000/brigades/ ');
     if (taskmaster) {
       vm.add = false;
     }
@@ -19,11 +20,18 @@
         "brigade": 0
       };
     vm.ok = function (taskmaster) {
-      var taskmasters_api = $resource('http://localhost:8000/taskmasters/:id/ ',{id:'@id'}, {
-        'update': { method:'PUT' }
-      });
-      taskmasters_api.update({ id: taskmaster.id }, taskmaster);
-      $modalInstance.close();
+      if (vm.add) {
+        var taskmasters_api = $resource('http://localhost:8000/taskmasters/ ');
+        taskmasters_api.save(taskmaster);
+        $modalInstance.close(taskmaster);
+      }
+      else {
+        var taskmasters_api = $resource('http://localhost:8000/taskmasters/:id/ ',{id:'@id'}, {
+          'update': { method:'PUT' }
+        });
+        taskmasters_api.update({ id: taskmaster.id }, taskmaster);
+        $modalInstance.close();
+      }
     };
   }
 })();

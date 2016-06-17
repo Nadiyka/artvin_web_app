@@ -22,21 +22,6 @@ class TaskmasterViewSet(viewsets.ModelViewSet):
     """ ViewSet for viewing and editing Chain objects """
     queryset = Taskmaster.objects.all()
     serializer_class = TaskmasterSerializer
-    def create(self, request):
-        serializer = self.serializer_class(data=request.data)
-
-        if serializer.is_valid():
-            taskmaster = Taskmaster(**serializer.validated_data)
-            taskmaster.save()
-
-            return Response(
-            serializer.validated_data, status=status.HTTP_201_CREATED
-            )
-
-        return Response({
-            'status': 'Bad request',
-            'message': 'Taskmaster could not be created with received data.'
-        }, status=status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -64,7 +49,7 @@ class ReportViewSet(viewsets.ModelViewSet):
 
 class AreaViewSet(viewsets.ModelViewSet):
     """ ViewSet for viewing and editing Store objects """
-    queryset = getAreas()
+    queryset = Area.objects.all()
     serializer_class = AreaSerializer
 
 
