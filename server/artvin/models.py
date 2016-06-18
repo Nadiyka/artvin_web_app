@@ -19,9 +19,6 @@ class WorkType(models.Model):
     name = models.CharField(max_length=30)
     standart = models.IntegerField()
 
-class Report(models.Model):
-    workType = models.ForeignKey(WorkType)
-    date = models.CharField(max_length=4)
 
 class Area(models.Model):
     name = models.CharField(max_length=30)
@@ -35,3 +32,8 @@ class Row(models.Model):
     area = models.ForeignKey(Area)
     bushes = models.IntegerField()
     
+class Report(models.Model):
+    workType = models.ForeignKey(WorkType)
+    date = models.CharField(max_length=4)
+    row = models.ForeignKey(Row)
+    area = models.ForeignKey(Area)
