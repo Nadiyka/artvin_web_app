@@ -6,7 +6,7 @@
     .config(routerConfig);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider, $urlRouterProvider, USER_ROLES) {
     $stateProvider
       .state('home', {
         url: '/',
@@ -18,6 +18,9 @@
             var areas_api = $resource('http://localhost:8000/areas');
             return areas_api.query().$promise;
           }
+        },
+        data: {
+          authorizedRoles: [USER_ROLES.head]
         }
       })
       .state('admin', {
@@ -29,28 +32,40 @@
         templateUrl: 'app/users/users.html',
         controller: 'UsersController',
         controllerAs: 'users',
-        parent: 'admin'
+        parent: 'admin',
+        data: {
+          authorizedRoles: [USER_ROLES.admin]
+        }
       })
       .state('taskmasters', {
         url: '/taskmasters',
         templateUrl: 'app/taskmasters/taskmasters.html',
         controller: 'TaskmastersController',
         controllerAs: 'taskmasters',
-        parent: 'admin'
+        parent: 'admin',
+        data: {
+          authorizedRoles: [USER_ROLES.admin]
+        }
       })
       .state('brigades',{
         url: '/brigades',
         templateUrl: 'app/brigades/brigades.html',
         controller: 'BrigadesController',
         controllerAs: 'brigades',
-        parent: 'admin'
+        parent: 'admin',
+        data: {
+          authorizedRoles: [USER_ROLES.admin]
+        }
       })
       .state('workers', {
         url: '/workers',
         templateUrl: 'app/workers/workers.html',
         controller: 'WorkersController',
         controllerAs: 'workers',
-        parent: 'admin'
+        parent: 'admin',
+        data: {
+          authorizedRoles: [USER_ROLES.admin]
+        }
       })
       .state('areas',{
         url: '/areas',
@@ -64,6 +79,9 @@
             return areas_api.query().$promise;
           }
         },
+        data: {
+          authorizedRoles: [USER_ROLES.admin]
+        }
       })
       .state('authorization', {
         url: '/authorization',

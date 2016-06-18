@@ -2,8 +2,8 @@
 <div class="container-fluid singnin-body">
   <form class="form-group form-signin" role="form">
     <h2 class="form-signin-heading">Вход в учетную запись</h2>
-    <input type="email" class="form-control" placeholder="Почта">
-    <input type="password" class="form-control" placeholder="Пароль">
+    <input type="email" class="form-control" ng-model="authorization.credentials.login"  placeholder="Почта">
+    <input type="password" class="form-control" ng-model="authorization.credentials.password" placeholder="Пароль">
     <label>
       <input type="checkbox" value="remember">
       Запомнить меня
