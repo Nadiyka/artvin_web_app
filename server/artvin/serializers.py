@@ -34,7 +34,7 @@ class ReportSerializer(serializers.ModelSerializer):
     """ Serializer to represent the Employee model """
     class Meta:
         model = Report
-        fields = ("id", "workType", "date")
+        fields = ("id", "workType", "date", "row", "area")
 
 
 class AreaSerializer(serializers.ModelSerializer):

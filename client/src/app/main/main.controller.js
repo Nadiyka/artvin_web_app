@@ -46,7 +46,7 @@
         }
       };
     };
-    vm.openWork = function (area, displayed_work) {
+    vm.openWork = function (area, displayed_work, year) {
       var modalInstance = $modal.open({
         animation: "true",
         templateUrl: 'app/work_display/work_display.html',
@@ -54,15 +54,15 @@
         controllerAs: 'work_display',
         size: "lg",
         resolve: {
-          work: function () {
-            return vm.displayed_work
+          work: displayed_work,
+          reports: function () {
+            var reports_api = $resource('http://localhost:8000/reports/ ');
+            return reports_api.query().$promise;
           },
-          status: function () {
-            return {
-              done: 2500,
-              total: 2500,
-              date: "23.04.2016"
-            }
+          year: year,
+          rows: function() {
+            var rows_api = $resource('http://localhost:8000/rows/ ');
+            return rows_api.query().$promise;
           }
         }
       });
