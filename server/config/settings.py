@@ -78,6 +78,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+AUTH_USER_MODEL = 'artvin.Account'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
